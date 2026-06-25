@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)file:///C:/Users/arman/Downloads/index_corrigido.html -->
-<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Qualivida — Painel Operacional</title>
-<script src="./index_files/chart.umd.min.js.download"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -197,21 +197,26 @@ tbody td{padding:10px 16px;font-size:13px}
 <div id="pwd-screen" style="position:fixed;inset:0;z-index:9999;background:#F4F3EF;display:flex;align-items:center;justify-content:center">
   <div style="background:#fff;border:1px solid #E2E0DA;border-radius:12px;padding:40px 44px;text-align:center;width:360px;box-shadow:0 4px 12px rgba(0,0,0,.1)">
     <div style="width:48px;height:48px;background:#0F7A5A;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
     </div>
     <div style="font-size:18px;font-weight:800;margin-bottom:4px">Qualivida</div>
     <div style="font-size:13px;color:#9B9A96;margin-bottom:24px">Painel Operacional</div>
-    <input id="pwd-inp" type="password" placeholder="Digite a senha" style="width:100%;padding:10px 14px;border:1.5px solid #E2E0DA;border-radius:8px;font-size:14px;text-align:center;letter-spacing:2px;margin-bottom:12px;outline:none;display:block" onkeydown="if(event.key===&#39;Enter&#39;){document.getElementById(&#39;pwd-btn&#39;).click()}">
-    <button id="pwd-btn" type="button" style="width:100%;padding:10px;background:#0F7A5A;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer" onclick="
-        var v=document.getElementById(&#39;pwd-inp&#39;).value.trim();
-        if(v===&#39;captaquali&#39;){
-          document.getElementById(&#39;pwd-screen&#39;).style.display=&#39;none&#39;;
+    <input id="pwd-inp" type="password" placeholder="Digite a senha"
+      style="width:100%;padding:10px 14px;border:1.5px solid #E2E0DA;border-radius:8px;font-size:14px;text-align:center;letter-spacing:2px;margin-bottom:12px;outline:none;display:block"
+      onkeydown="if(event.key==='Enter'){document.getElementById('pwd-btn').click()}"
+    />
+    <button id="pwd-btn" type="button"
+      style="width:100%;padding:10px;background:#0F7A5A;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer"
+      onclick="
+        var v=document.getElementById('pwd-inp').value.trim();
+        if(v==='captaquali'){
+          document.getElementById('pwd-screen').style.display='none';
           loadDemo();
           setTimeout(function(){syncData();},300);
         }else{
-          document.getElementById(&#39;pwd-err&#39;).textContent=&#39;Senha incorreta.&#39;;
-          document.getElementById(&#39;pwd-inp&#39;).value=&#39;&#39;;
-          document.getElementById(&#39;pwd-inp&#39;).focus();
+          document.getElementById('pwd-err').textContent='Senha incorreta.';
+          document.getElementById('pwd-inp').value='';
+          document.getElementById('pwd-inp').focus();
         }
       ">Entrar</button>
     <div id="pwd-err" style="font-size:12px;color:#D94040;margin-top:8px;min-height:16px"></div>
@@ -221,17 +226,17 @@ tbody td{padding:10px 16px;font-size:13px}
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sidebar-logo">
-    <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 21C12 21 4 13.5 4 8.5C4 5.46 6.69 3 10 3"></path><path d="M12 21C12 21 20 13.5 20 8.5C20 5.46 17.31 3 14 3"></path><circle cx="12" cy="9" r="2"></circle></svg></div>
+    <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 21C12 21 4 13.5 4 8.5C4 5.46 6.69 3 10 3"/><path d="M12 21C12 21 20 13.5 20 8.5C20 5.46 17.31 3 14 3"/><circle cx="12" cy="9" r="2"/></svg></div>
     <div><div class="logo-name">Qualivida</div><div class="logo-sub">Painel Operacional</div></div>
   </div>
   <div class="nav-section">Dashboards</div>
-  <a class="nav-item active" onclick="switchTab(&#39;visao&#39;,this)" href="file:///C:/Users/arman/Downloads/index_corrigido.html#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span>Visão geral</span></a>
-  <a class="nav-item" onclick="switchTab(&#39;pacientes&#39;,this)" href="file:///C:/Users/arman/Downloads/index_corrigido.html#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg><span>Pacientes</span></a>
-  <a class="nav-item" onclick="switchTab(&#39;funil&#39;,this)" href="file:///C:/Users/arman/Downloads/index_corrigido.html#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg><span>Conversão</span></a>
-  <a class="nav-item" onclick="switchTab(&#39;prazos&#39;,this)" href="file:///C:/Users/arman/Downloads/index_corrigido.html#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>Prazos</span></a>
+  <a class="nav-item active" onclick="switchTab('visao',this)" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Visão geral</span></a>
+  <a class="nav-item" onclick="switchTab('pacientes',this)" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>Pacientes</span></a>
+  <a class="nav-item" onclick="switchTab('funil',this)" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Conversão</span></a>
+  <a class="nav-item" onclick="switchTab('prazos',this)" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Prazos</span></a>
   <div class="nav-section" style="margin-top:12px">Sistema</div>
-  <a class="nav-item" onclick="document.querySelector(&#39;.setup-banner&#39;).classList.toggle(&#39;hidden&#39;)" href="file:///C:/Users/arman/Downloads/index_corrigido.html#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93L17.66 6.34M4.93 4.93L6.34 6.34M19.07 19.07L17.66 17.66M4.93 19.07L6.34 17.66M21 12H19M5 12H3M12 21V19M12 5V3"></path></svg><span>Configuração</span></a>
-  <a class="nav-item" onclick="syncData()" href="file:///C:/Users/arman/Downloads/index_corrigido.html#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg><span>Sincronizar</span></a>
+  <a class="nav-item" onclick="document.querySelector('.setup-banner').classList.toggle('hidden')" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93L17.66 6.34M4.93 4.93L6.34 6.34M19.07 19.07L17.66 17.66M4.93 19.07L6.34 17.66M21 12H19M5 12H3M12 21V19M12 5V3"/></svg><span>Configuração</span></a>
+  <a class="nav-item" onclick="syncData()" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg><span>Sincronizar</span></a>
 </aside>
 
 <!-- MAIN -->
@@ -242,24 +247,24 @@ tbody td{padding:10px 16px;font-size:13px}
       <span class="status-dot demo" id="status-dot"></span>
       <span style="font-size:12px;color:var(--hint)" id="status-lbl">Dados de demonstração</span>
       <span style="font-size:11px;color:var(--hint)" id="countdown"></span>
-      <button class="btn btn-ghost" onclick="syncData()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>Sincronizar</button>
+      <button class="btn btn-ghost" onclick="syncData()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Sincronizar</button>
     </div>
   </header>
 
   <div class="content">
     <!-- hidden inputs for compat -->
-    <input type="hidden" id="cfg-sid"><input type="hidden" id="cfg-key">
+    <input type="hidden" id="cfg-sid"/><input type="hidden" id="cfg-key"/>
 
     <!-- MONTHS -->
     <div class="month-row" id="month-row"></div>
 
     <!-- FILTERS -->
     <div class="filter-row">
-      <div class="multi-wrap" id="wrap-convenio"><div class="multi-btn" onclick="toggleDD(&#39;convenio&#39;)"><span id="lbl-convenio">Convênio — Todos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="multi-dd" id="dd-convenio"></div></div>
-      <div class="multi-wrap" id="wrap-filial"><div class="multi-btn" onclick="toggleDD(&#39;filial&#39;)"><span id="lbl-filial">Filial — Todas</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="multi-dd" id="dd-filial"></div></div>
-      <div class="multi-wrap" id="wrap-complex"><div class="multi-btn" onclick="toggleDD(&#39;complex&#39;)"><span id="lbl-complex">Complexidade — Todas</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="multi-dd" id="dd-complex"></div></div>
-      <div class="multi-wrap" id="wrap-status"><div class="multi-btn" onclick="toggleDD(&#39;status&#39;)"><span id="lbl-status">Status — Todos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="multi-dd" id="dd-status"></div></div>
-      <input class="filter-input" id="f-search" placeholder="🔍 Buscar paciente..." oninput="render()">
+      <div class="multi-wrap" id="wrap-convenio"><div class="multi-btn" onclick="toggleDD('convenio')"><span id="lbl-convenio">Convênio — Todos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="multi-dd" id="dd-convenio"></div></div>
+      <div class="multi-wrap" id="wrap-filial"><div class="multi-btn" onclick="toggleDD('filial')"><span id="lbl-filial">Filial — Todas</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="multi-dd" id="dd-filial"></div></div>
+      <div class="multi-wrap" id="wrap-complex"><div class="multi-btn" onclick="toggleDD('complex')"><span id="lbl-complex">Complexidade — Todas</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="multi-dd" id="dd-complex"></div></div>
+      <div class="multi-wrap" id="wrap-status"><div class="multi-btn" onclick="toggleDD('status')"><span id="lbl-status">Status — Todos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="multi-dd" id="dd-status"></div></div>
+      <input class="filter-input" id="f-search" placeholder="🔍 Buscar paciente..." oninput="render()"/>
       <span class="filter-clear" onclick="clearFilters()">Limpar filtros</span>
     </div>
 
@@ -268,10 +273,10 @@ tbody td{padding:10px 16px;font-size:13px}
 
     <!-- TABS -->
     <div class="tabs">
-      <div class="tab active" onclick="switchTab(&#39;visao&#39;,this)">Visão geral</div>
-      <div class="tab" onclick="switchTab(&#39;pacientes&#39;,this)">Pacientes</div>
-      <div class="tab" onclick="switchTab(&#39;funil&#39;,this)">Conversão</div>
-      <div class="tab" onclick="switchTab(&#39;prazos&#39;,this)">Prazos</div>
+      <div class="tab active" onclick="switchTab('visao',this)">Visão geral</div>
+      <div class="tab" onclick="switchTab('pacientes',this)">Pacientes</div>
+      <div class="tab" onclick="switchTab('funil',this)">Conversão</div>
+      <div class="tab" onclick="switchTab('prazos',this)">Prazos</div>
     </div>
 
     <!-- VISÃO GERAL -->
@@ -384,7 +389,7 @@ async function syncData(){
       const aut  = parseDate(obj['AUT_DATA']);
       allData.push({
         nome: String(obj['NOME']||'').trim(),
-        convenio: String(obj['CONVÊNIO'] || obj['CONVENIO']||'').trim(),
+        convenio: String(obj['CONVENIO']||'').trim(),
         complex: String(obj['COMPLEXIDADE']||'').trim(),
         filial: String(obj['FILIAL']||'').trim(),
         medico: String(obj['MEDICO']||'').trim(),
@@ -676,7 +681,7 @@ const labelPlugin={id:'lp',afterDatasetsDraw(chart){
       }
       ctx.restore();
     });
-  }};
+  });
 };
 Chart.register(labelPlugin);
 
@@ -779,5 +784,5 @@ function renderPrazos(data){
   dc('prazo-conv');charts['prazo-conv']=new Chart(document.getElementById('ch-prazo-conv'),{type:'bar',data:{labels:cpS.map(e=>e.c),datasets:[{data:cpS.map(e=>+e.a.toFixed(1)),backgroundColor:'#6B46C1',borderRadius:5}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#E2E0DA'}},y:{grid:{display:false},ticks:{font:{size:10}}}}}});
 }
 </script>
-
-</body></html>
+</body>
+</html>
